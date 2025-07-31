@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kenya Stock Market</title>
+</head>
+<body>
+  <h1>Safaricom Live Price</h1>
+  <div id="price">Loading...</div>
+
+  <script>
+    fetch('/api/stock?symbol=SCOM.KE')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('price').innerText =
+          `${data.symbol} Price: KES ${data.price}`;
+      })
+      .catch(() => {
+        document.getElementById('price').innerText = 'Error loading price';
+      });
+  </script>
+</body>
+</html>
